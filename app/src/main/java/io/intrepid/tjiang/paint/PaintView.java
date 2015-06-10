@@ -3,6 +3,7 @@ package io.intrepid.tjiang.paint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,15 +20,22 @@ public class PaintView extends View {
         super(context);
     }
 
+    public PaintView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public PaintView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
     public boolean onTouchEvent(MotionEvent event){
-        int x = event.AXIS_X;
-        int y = event.AXIS_Y;
-        Log.v("TouchLoc", x + ", " + y);
+        float x = event.getX();
+        float y = event.getY();
         return true;
     }
 
-   /* @Override
-    protected void onDraw(Canvas canvas){
+    /*@Override
+    protected void onDraw(Canvas canvas) {
 
     }*/
 
