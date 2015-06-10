@@ -9,16 +9,17 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 /**
  * Created by tjiang on 6/9/15.
  */
-public class PaintView extends View {
+public class PaintView extends ImageView {
 
-    Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-    Canvas c = new Canvas(b);
     //init paint to blue
     Paint testPaint = initPaint();
+    float x = 0.0f;
+    float y = 0.0f;
 
     public PaintView(Context context) {
         super(context);
@@ -34,26 +35,23 @@ public class PaintView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
-        float x = event.getX();
-        float y = event.getY();
-
-
-
+        x = event.getX();
+        y = event.getY();
+        Log.v("TouchLoc", x + " ," + y);
+        invalidate();
         return true;
     }
 
-    /*@Override
+    @Override
     protected void onDraw(Canvas canvas) {
-
-    }*/
+        canvas.drawCircle(x, y, 500.0f, testPaint);
+    }
 
     private Paint initPaint() {
         Paint testPaint = new Paint();
         testPaint.setColor(Color.BLUE);
+        testPaint.setStrokeWidth(10.0f);
+        testPaint.setStyle(Paint.Style.FILL);
         return testPaint;
     }
-
-
-
-
 }
