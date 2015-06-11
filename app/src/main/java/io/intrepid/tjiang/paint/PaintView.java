@@ -43,7 +43,6 @@ public class PaintView extends View {
     public boolean onTouchEvent(MotionEvent event){
         x = event.getX();
         y = event.getY();
-        Log.v("TouchLoc", x + " ," + y);
         storageCanvas.drawCircle(x, y, 10.0f, testPaint);
         invalidate(); //causes onDraw() to be called again
         return true;
