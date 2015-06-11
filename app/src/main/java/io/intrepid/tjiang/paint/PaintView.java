@@ -20,7 +20,7 @@ public class PaintView extends ImageView {
     private Paint testPaint = initPaint();
     private float x;
     private float y;
-    private Bitmap bitchMap = Bitmap.createBitmap(
+    private Bitmap bitMap = Bitmap.createBitmap(
             1000,
             1000,
             Bitmap.Config.ARGB_8888);
@@ -50,9 +50,9 @@ public class PaintView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.setBitmap(bitchMap);
+        canvas.setBitmap(bitMap);
         canvas.drawCircle(x, y, 10.0f, testPaint);
-
+        
     }
 
     private Paint initPaint() {
