@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -14,18 +15,17 @@ import android.widget.ImageView;
 /**
  * Created by tjiang on 6/9/15.
  */
-public class PaintView extends ImageView {
-
+public class PaintView extends View {
     //init paint to blue
     private Paint testPaint = initPaint();
     private float x;
     private float y;
-    private Bitmap bitMap = Bitmap.createBitmap(
+    private Bitmap storageBitMap = Bitmap.createBitmap(
             1000,
             1000,
             Bitmap.Config.ARGB_8888);
-
-
+    private Canvas storageCanvas = new Canvas(storageBitMap);
+    private Matrix identityMatrix = new Matrix();
 
     public PaintView(Context context) {
         super(context);
@@ -44,15 +44,14 @@ public class PaintView extends ImageView {
         x = event.getX();
         y = event.getY();
         Log.v("TouchLoc", x + " ," + y);
-        invalidate();
+        storageCanvas.drawCircle(x, y, 10.0f, testPaint);
+        invalidate(); //causes onDraw() to be called again
         return true;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.setBitmap(bitMap);
-        canvas.drawCircle(x, y, 10.0f, testPaint);
-        
+        canvas.drawBitmap(storageBitMap, identityMatrix, testPaint);
     }
 
     private Paint initPaint() {
