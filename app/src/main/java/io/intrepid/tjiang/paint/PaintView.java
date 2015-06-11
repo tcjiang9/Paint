@@ -17,9 +17,15 @@ import android.widget.ImageView;
 public class PaintView extends ImageView {
 
     //init paint to blue
-    Paint testPaint = initPaint();
-    float x = 0.0f;
-    float y = 0.0f;
+    private Paint testPaint = initPaint();
+    private float x;
+    private float y;
+    private Bitmap bitchMap = Bitmap.createBitmap(
+            1000,
+            1000,
+            Bitmap.Config.ARGB_8888);
+
+
 
     public PaintView(Context context) {
         super(context);
@@ -44,7 +50,9 @@ public class PaintView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawCircle(x, y, 500.0f, testPaint);
+        canvas.setBitmap(bitchMap);
+        canvas.drawCircle(x, y, 10.0f, testPaint);
+
     }
 
     private Paint initPaint() {
