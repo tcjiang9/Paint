@@ -17,7 +17,8 @@ import android.widget.ImageView;
  */
 public class PaintView extends View {
     //init paint to blue
-    private Paint testPaint = initPaint();
+    private int currentColour = Color.BLUE;
+    private Paint testPaint = initPaint(currentColour);
     private float x;
     private float y;
     private float prevX = 0;
@@ -42,7 +43,7 @@ public class PaintView extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event){
+    public boolean onTouchEvent(MotionEvent event) {
         x = event.getX();
         y = event.getY();
         if (event.getAction() == event.ACTION_DOWN) {
@@ -61,9 +62,17 @@ public class PaintView extends View {
         canvas.drawBitmap(storageBitMap, identityMatrix, testPaint);
     }
 
-    private Paint initPaint() {
+    public int getCurrentColour() {
+        return currentColour;
+    }
+
+    public void changeColour(int newColour) {
+        testPaint = initPaint (newColour);
+    }
+
+    private Paint initPaint(int color) {
         Paint testPaint = new Paint();
-        testPaint.setColor(Color.BLUE);
+        testPaint.setColor(color);
         testPaint.setStrokeWidth(10.0f);
         testPaint.setStyle(Paint.Style.FILL);
         return testPaint;
