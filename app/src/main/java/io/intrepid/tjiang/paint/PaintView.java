@@ -67,7 +67,7 @@ public class PaintView extends View {
     }
 
     public void changeColour(int newColour) {
-        testPaint = initPaint (newColour);
+        testPaint = initPaint(newColour);
     }
 
     private Paint initPaint(int color) {
