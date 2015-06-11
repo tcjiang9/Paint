@@ -20,6 +20,8 @@ public class PaintView extends View {
     private Paint testPaint = initPaint();
     private float x;
     private float y;
+    private float prevX = 0;
+    private float prevY = 0;
     private Bitmap storageBitMap = Bitmap.createBitmap(
             1000,
             1000,
@@ -43,7 +45,13 @@ public class PaintView extends View {
     public boolean onTouchEvent(MotionEvent event){
         x = event.getX();
         y = event.getY();
-        storageCanvas.drawCircle(x, y, 10.0f, testPaint);
+        if (event.getAction() == event.ACTION_DOWN) {
+            prevX = event.getX();
+            prevY = event.getY();
+        }
+        storageCanvas.drawLine(prevX, prevY, x, y, testPaint);
+        prevX = x;
+        prevY = y;
         invalidate(); //causes onDraw() to be called again
         return true;
     }

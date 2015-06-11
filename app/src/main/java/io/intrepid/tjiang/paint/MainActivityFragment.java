@@ -21,7 +21,6 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_main, container, false);
-        PaintView paintView = (PaintView) rootView.findViewById(R.id.paint_screen_id);
         return rootView;
     }
 }
