@@ -15,18 +15,21 @@ import android.widget.Button;
 
 //define custom view that matches parent.
 public class PaintFragment extends Fragment {
+    PaintView paintView;
 
     public PaintFragment() {
     }
 
+    //previously I inflated all the buttons here and set their onclick listeners
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.paint_fragment_main, container, false);
+        paintView = (PaintView) rootView.findViewById((R.id.paint_screen_id));
         return rootView;
     }
 
-    public void changeColour(int colour){
-
+    public void changePaintViewColour(int colour){
+        paintView.changeColour(colour);
     }
 }

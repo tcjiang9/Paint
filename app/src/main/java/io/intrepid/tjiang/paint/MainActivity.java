@@ -8,14 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity
+implements ButtonFragment.OnButtonClickedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -37,5 +37,13 @@ public class MainActivity extends FragmentActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onButtonSelected(int colour) {
+        PaintFragment paintFragment = (PaintFragment)
+                getSupportFragmentManager().findFragmentById(R.id.paint_fragment);
+        if (paintFragment != null) {
+            paintFragment.changePaintViewColour(colour);
+        }
     }
 }
