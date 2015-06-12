@@ -14,6 +14,10 @@ import android.widget.Button;
  */
 public class ButtonFragment extends Fragment{
 
+    public interface onButtonClickedListener(){
+        public void onButtonSelected(View v);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.button_fragment_main, container, false);
