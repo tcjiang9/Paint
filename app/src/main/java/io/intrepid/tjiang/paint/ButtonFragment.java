@@ -1,29 +1,25 @@
 package io.intrepid.tjiang.paint;
 
+import android.app.Fragment;
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-
 /**
- * A placeholder fragment containing a simple view.
+ * Created by tjiang on 6/12/15.
  */
-
-//define custom view that matches parent.
-public class MainActivityFragment extends Fragment {
-
-    public MainActivityFragment() {
-    }
+public class ButtonFragment extends Fragment{
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView =  inflater.inflate(R.layout.fragment_main, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.button_fragment_main, container, false);
+
+        /*TODO: Need to make the two fragments communicate because PaintView is in the other fragment
+        in the current implementation it is null.*/
         final PaintView paintView = (PaintView) rootView.findViewById(R.id.paint_screen_id);
         Button blueButton = (Button) rootView.findViewById(R.id.blue_button);
         blueButton.setOnClickListener(new View.OnClickListener(){
@@ -36,7 +32,6 @@ public class MainActivityFragment extends Fragment {
         blackButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 paintView.changeColour(Color.BLACK);
-                Log.v("MainActivityFragment", "You clicked this button");
             }
         });
 

@@ -1,7 +1,23 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment"
-    android:name="io.intrepid.tjiang.paint.MainActivityFragment"
-    tools:layout="@layout/fragment_main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent">
+
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="io.intrepid.tjiang.paint.PaintFragment"
+        android:id="@+id/paint_fragment"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:layout="@layout/paint_fragment_main"
+        android:layout_width="match_parent"
+        android:layout_height="464dp" />
+
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="io.intrepid.tjiang.paint.ButtonFragment"
+        android:id="@+id/buttons_fragment"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"/>
+
+</LinearLayout>
