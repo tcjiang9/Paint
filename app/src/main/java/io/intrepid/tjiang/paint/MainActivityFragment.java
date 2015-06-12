@@ -39,6 +39,13 @@ public class MainActivityFragment extends Fragment {
                 Log.v("MainActivityFragment", "You clicked this button");
             }
         });
+
+        final Button eraseButton = (Button) rootView.findViewById(R.id.erase_button);
+        eraseButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                paintView.changeColour(Color.WHITE);
+            }
+        });
         return rootView;
     }
 }

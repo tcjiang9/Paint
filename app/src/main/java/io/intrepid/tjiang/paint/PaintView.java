@@ -25,21 +25,25 @@ public class PaintView extends View {
     private float prevY = 0;
     private Bitmap storageBitMap = Bitmap.createBitmap(
             1000,
-            1000,
+            1500,
             Bitmap.Config.ARGB_8888);
     private Canvas storageCanvas = new Canvas(storageBitMap);
     private Matrix identityMatrix = new Matrix();
 
     public PaintView(Context context) {
         super(context);
+        Log.v("PAINTVIEW", "It ran the constructor 1");
     }
 
     public PaintView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        Log.v("PAINTVIEW", "It ran the constructor 2");
+        setBackgroundColor(Color.WHITE);
     }
 
     public PaintView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        Log.v("PAINTVIEW", "It ran the constructor 3");
     }
 
     @Override
@@ -69,6 +73,7 @@ public class PaintView extends View {
     public void changeColour(int newColour) {
         testPaint = initPaint(newColour);
     }
+
 
     private Paint initPaint(int color) {
         Paint testPaint = new Paint();
